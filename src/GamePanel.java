@@ -71,6 +71,12 @@ public class GamePanel extends JPanel implements ActionListener,KeyListener{
 			r = new Rocketship(250,700,50,50);
 			om = new ObjectManager(r);
 		}
+		if(om.alienMadeIt == true) {
+			currentState = END_STATE;
+			om.reset();
+			r = new Rocketship(250,700,50,50);
+			om = new ObjectManager(r);
+		}
 	}
 	public void updateEndState() {
 	}

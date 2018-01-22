@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Random;
@@ -7,11 +8,42 @@ public class ObjectManager {
 	Rocketship r;
 	long enemyTimer = 0;
 	int enemySpawnTime = 1000;
-	static int score = 0;
+	static int score = 349;
+	boolean alienMadeIt = false;
 	public ObjectManager(Rocketship r) {
 		this.r = r;
 		projectile =  new ArrayList<Projectile>();
 		alien = new ArrayList<Alien>();
+	}
+	int getNewTimer() {
+		if(score == 25) {
+			enemySpawnTime = 950;
+		}
+		if(score == 50) {
+			enemySpawnTime = 900;
+		}
+		if(score == 75) {
+			enemySpawnTime = 850;
+		}
+		if(score == 100) {
+			enemySpawnTime = 800;
+		}
+		if(score == 125) {
+			enemySpawnTime = 750;
+		}
+		if(score == 150) {
+			enemySpawnTime = 700;
+		}
+		if(score == 175) {
+			enemySpawnTime = 650;
+		}
+		if(score == 200) {
+			enemySpawnTime = 600;
+		}
+		if(score > 350) {
+			enemySpawnTime = 1;
+		}
+		return enemySpawnTime;
 	}
 	int getScore() { 
 		return score;
@@ -41,8 +73,9 @@ public class ObjectManager {
 		alien.add(a);
 	}
 	public void manageEnemies(){
-        if(System.currentTimeMillis() - enemyTimer >= enemySpawnTime){
-        		addAlien(new Alien(new Random().nextInt(LeagueInvaders.width), 0, 50, 50));
+		int spawnTimer = getNewTimer();
+        if(System.currentTimeMillis() - enemyTimer >= spawnTimer){
+        		addAlien(new Alien(new Random().nextInt(LeagueInvaders.width - 50), 0, 50, 50));
             enemyTimer = System.currentTimeMillis();
         }
 	}
@@ -63,6 +96,11 @@ public class ObjectManager {
 			}
 		}	
 	public void purgeObjects() {
+		for(Alien a: alien) {
+			if(a.y > 800) {
+				alienMadeIt = true;
+			}
+		}
 		for(int i = 0;i < alien.size(); i++) {
 			if(!alien.get(i).isAlive) {
 				alien.remove(i);
