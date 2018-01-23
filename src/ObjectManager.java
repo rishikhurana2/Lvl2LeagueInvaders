@@ -8,7 +8,7 @@ public class ObjectManager {
 	Rocketship r;
 	long enemyTimer = 0;
 	int enemySpawnTime = 1000;
-	static int score = 349;
+	static int score = 0;
 	boolean alienMadeIt = false;
 	public ObjectManager(Rocketship r) {
 		this.r = r;
@@ -17,31 +17,31 @@ public class ObjectManager {
 	}
 	int getNewTimer() {
 		if(score == 25) {
-			enemySpawnTime = 950;
-		}
-		if(score == 50) {
 			enemySpawnTime = 900;
 		}
-		if(score == 75) {
-			enemySpawnTime = 850;
-		}
-		if(score == 100) {
+		if(score == 50) {
 			enemySpawnTime = 800;
 		}
-		if(score == 125) {
-			enemySpawnTime = 750;
-		}
-		if(score == 150) {
+		if(score == 75) {
 			enemySpawnTime = 700;
 		}
-		if(score == 175) {
-			enemySpawnTime = 650;
-		}
-		if(score == 200) {
+		if(score == 100) {
 			enemySpawnTime = 600;
 		}
+		if(score == 125) {
+			enemySpawnTime = 500;
+		}
+		if(score == 150) {
+			enemySpawnTime = 400;
+		}
+		if(score == 175) {
+			enemySpawnTime = 300;
+		}
+		if(score == 200) {
+			enemySpawnTime = 200;
+		}
 		if(score > 350) {
-			enemySpawnTime = 1;
+			enemySpawnTime = (int) (enemySpawnTime* 0.001);
 		}
 		return enemySpawnTime;
 	}
