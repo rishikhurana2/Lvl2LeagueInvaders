@@ -29,19 +29,19 @@ public class ObjectManager {
 			enemySpawnTime = 600;
 		}
 		if(score == 125) {
-			enemySpawnTime = 500;
+			enemySpawnTime = 550;
 		}
 		if(score == 150) {
-			enemySpawnTime = 400;
+			enemySpawnTime = 500;
 		}
 		if(score == 175) {
-			enemySpawnTime = 300;
+			enemySpawnTime = 450;
 		}
 		if(score == 200) {
-			enemySpawnTime = 200;
+			enemySpawnTime = 400;
 		}
 		if(score > 350) {
-			enemySpawnTime = (int) (enemySpawnTime* 0.001);
+			enemySpawnTime = (int) (enemySpawnTime* 0.0001);
 		}
 		return enemySpawnTime;
 	}
